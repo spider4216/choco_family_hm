@@ -9,6 +9,7 @@ use app\exceptions\SubjectException;
 use app\exceptions\UserDataException;
 use app\enums\RestStatusEnum;
 use yii\base\Controller;
+use app\dto\CreateUserDto;
 
 class UserController extends Controller
 {
@@ -20,50 +21,16 @@ class UserController extends Controller
             throw new NotFoundHttpException('Town not found');
         }
         
-        $transaction = \Yii::$app->db->beginTransaction();
+        $dto = new CreateUserDto();
         
-        $user = new SubjectModel();
+        $dto->setEmail($request->post('email'))
+        ->setPhone($request->post('phone'))
+        ->setName($request->post('name'))
+        ->setSurname($request->post('surname'))
+        ->setGender($request->post('gender'))
+        ->setTownId($request->post('town_id'));
         
-        $user->email = $request->post('email');
-        $user->phone = $request->post('phone');
-        
-        if ($user->save() === false) {
-            $transaction->rollBack();
-            
-            throw new SubjectException(
-                \Yii::t(
-                    'app',
-                    'cannot create user: {err}', [
-                        'err' => implode(';', $user->getErrorSummary(true))
-                    ]
-                )
-            );
-        }
-        
-        $profile = new UserDataModel();
-        
-        $profile->attributes = [
-            'user_id' => $user->id,
-            'name' => $request->post('name'),
-            'surname' => $request->post('surname'),
-            'gender' => $request->post('gender'),
-            'town_id' => $request->post('town_id'),
-        ];
-        
-        if ($profile->save() === false) {
-            $transaction->rollBack();
-            
-            throw new UserDataException(
-                \Yii::t(
-                    'app',
-                    'cannot create user profile: {err}', [
-                        'err' => implode(';', $profile->getErrorSummary(true))
-                    ]
-                )
-            );
-        }
-        
-        $transaction->commit();
+        $user = \Yii::$app->subject->create($dto);
         
         return [
             'status' => RestStatusEnum::OK,

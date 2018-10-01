@@ -1,6 +1,7 @@
 <?php
 
 use yii\web\Response;
+use app\services\UserService;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
@@ -59,6 +60,10 @@ $config = [
             'rules' => [
                 'POST user' => 'user/create',
             ],
+        ],
+        
+        'subject' => [
+            'class' => UserService::class,
         ],
         
     ],
