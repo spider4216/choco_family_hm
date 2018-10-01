@@ -17,8 +17,8 @@ class m181001_100513_create_towns_table extends Migration
     {
         $this->createTable('towns', [
             'id' => $this->primaryKey(),
-            'name' => $this->char(255)->notNull(),
-            'translit_name' => $this->char(255)->notNull(),
+            'name' => $this->text()->notNull(),
+            'translit_name' => $this->text()->notNull(),
         ]);
     }
 

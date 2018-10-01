@@ -18,8 +18,8 @@ class m181001_100701_create_user_data_table extends Migration
         $this->createTable('user_data', [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
-            'name' => $this->char(255)->notNull(),
-            'surname' => $this->char(255)->notNull(),
+            'name' => $this->text()->notNull(),
+            'surname' => $this->text()->notNull(),
             'gender' => $this->integer()->notNull(),
             'town_id' => $this->integer()->notNull(),
         ]);

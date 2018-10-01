@@ -15,6 +15,8 @@ class SubjectModel extends ActiveRecord
     {
         return [
             [['email', 'phone',], 'required'],
+
+            [['email', 'phone',], 'unique'],
             
             ['email', 'email'],
             

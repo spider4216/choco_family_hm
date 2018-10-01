@@ -59,6 +59,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'POST user' => 'user/create',
+                'GET users' => 'user/user-list',
             ],
         ],
         

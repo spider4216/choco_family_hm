@@ -1,15 +1,12 @@
 <?php
 namespace app\controllers;
 
-use app\models\SubjectModel;
-use app\models\UserDataModel;
 use app\models\TownsModel;
 use yii\web\NotFoundHttpException;
-use app\exceptions\SubjectException;
-use app\exceptions\UserDataException;
 use app\enums\RestStatusEnum;
 use yii\base\Controller;
 use app\dto\CreateUserDto;
+use app\models\SubjectModel;
 
 class UserController extends Controller
 {
@@ -36,6 +33,14 @@ class UserController extends Controller
             'status' => RestStatusEnum::OK,
             'user_id' => $user->id,
         ];
+    }
+    
+    public function actionUserList()
+    {
+        return SubjectModel::find()->select([
+            'id',
+            'phone'
+        ])->asArray()->all();
     }
 }
 

@@ -18,8 +18,8 @@ class m181001_095051_create_users_table extends Migration
     {
         $this->createTable('users', [
             'id' => $this->primaryKey(),
-            'email' => $this->char(255)->notNull(),
-            'phone' => $this->char(255)->notNull(),
+            'email' => $this->text()->notNull()->unique(),
+            'phone' => $this->text()->notNull()->unique(),
             'status' => $this->integer()
                 ->notNull()
                 ->defaultValue(UserStatusEnum::ACTIVE),
