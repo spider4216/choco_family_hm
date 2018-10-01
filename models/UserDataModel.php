@@ -24,5 +24,10 @@ class UserDataModel extends ActiveRecord
             [['name', 'surname'], 'string', 'max' => 255],
         ];
     }
+    
+    public function getTown()
+    {
+        return $this->hasOne(TownsModel::class, ['id' => 'town_id']);
+    }
 }
 

@@ -60,6 +60,7 @@ $config = [
             'rules' => [
                 'POST user' => 'user/create',
                 'GET users' => 'user/user-list',
+                'GET user/<id:\d+>' => 'user/user-detail',
             ],
         ],
         

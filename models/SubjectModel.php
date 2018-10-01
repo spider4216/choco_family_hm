@@ -27,5 +27,10 @@ class SubjectModel extends ActiveRecord
             ['status', 'integer'],
         ];
     }
+    
+    public function getProfile()
+    {
+        return $this->hasOne(UserDataModel::class, ['user_id' => 'id']);
+    }
 }
 

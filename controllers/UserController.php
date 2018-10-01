@@ -42,5 +42,21 @@ class UserController extends Controller
             'phone'
         ])->asArray()->all();
     }
+    
+    public function actionUserDetail()
+    {
+        $id = \Yii::$app->request->get('id');
+        
+        return SubjectModel::find()
+        ->select(
+            'users.*, ud.name as first_name, ud.surname, ud.gender, ' . 
+            't.name as city_name, t.translit_name as city_translit_name'
+        )
+        ->leftJoin('user_data ud', 'ud.user_id=users.id')
+        ->leftJoin('towns t', 'ud.town_id=t.id')
+        ->where(['users.id' => $id])
+        ->asArray()
+        ->one();
+    }
 }
 
