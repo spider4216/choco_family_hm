@@ -1,5 +1,5 @@
 <?php
-namespace app\enums;
+namespace app\modules\chocouser\enums;
 
 class UserStatusEnum
 {

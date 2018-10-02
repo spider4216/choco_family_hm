@@ -1,5 +1,5 @@
 <?php
-namespace app\exceptions;
+namespace app\modules\chocouser\exceptions;
 
 use yii\base\Exception;
 

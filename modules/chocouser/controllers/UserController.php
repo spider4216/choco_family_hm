@@ -1,12 +1,12 @@
 <?php
-namespace app\controllers;
+namespace app\modules\chocouser\controllers;
 
-use app\models\TownsModel;
 use yii\web\NotFoundHttpException;
-use app\enums\RestStatusEnum;
 use yii\base\Controller;
-use app\dto\CreateUserDto;
-use app\models\SubjectModel;
+use app\modules\chocouser\dto\CreateUserDto;
+use app\modules\chocouser\models\SubjectModel;
+use app\modules\chocouser\models\TownsModel;
+use app\modules\chocouser\enums\RestStatusEnum;
 
 class UserController extends Controller
 {
@@ -27,7 +27,7 @@ class UserController extends Controller
         ->setGender($request->post('gender'))
         ->setTownId($request->post('town_id'));
         
-        $user = \Yii::$app->subject->create($dto);
+        $user = \Yii::$app->getModule('chocouser')->subject->create($dto);
         
         return [
             'status' => RestStatusEnum::OK,
@@ -47,12 +47,12 @@ class UserController extends Controller
     {
         $id = \Yii::$app->request->get('id');
         
-        return \Yii::$app->subject->detailById($id);
+        return \Yii::$app->getModule('chocouser')->subject->detailById($id);
     }
     
     public function actionUserCount()
     {
-        $count = \Yii::$app->subject->usersCount();
+        $count = \Yii::$app->getModule('chocouser')->subject->usersCount();
         
         return [
             'count' => $count,

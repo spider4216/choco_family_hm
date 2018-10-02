@@ -1,8 +1,8 @@
 <?php
-namespace app\services;
+namespace app\modules\chocouser\services;
 
 use yii\base\Component;
-use app\models\TownsModel;
+use app\modules\chocouser\models\TownsModel;
 
 class TownService extends Component
 {

@@ -1,5 +1,5 @@
 <?php
-namespace app\controllers;
+namespace app\modules\chocouser\controllers;
 
 use yii\base\Controller;
 
@@ -7,7 +7,7 @@ class TownsController extends Controller
 {
     public function actionAll()
     {
-        return \Yii::$app->town->allTowns();
+        return \Yii::$app->getModule('chocouser')->town->allTowns();
     }
 }
 

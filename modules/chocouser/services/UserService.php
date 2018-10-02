@@ -1,12 +1,12 @@
 <?php
-namespace app\services;
+namespace app\modules\chocouser\services;
 
 use yii\base\Component;
-use app\dto\CreateUserDto;
-use app\models\SubjectModel;
-use app\exceptions\SubjectException;
-use app\models\UserDataModel;
-use app\exceptions\UserDataException;
+use app\modules\chocouser\models\SubjectModel;
+use app\modules\chocouser\models\UserDataModel;
+use app\modules\chocouser\exceptions\SubjectException;
+use app\modules\chocouser\exceptions\UserDataException;
+use app\modules\chocouser\dto\CreateUserDto;
 
 class UserService extends Component
 {

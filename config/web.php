@@ -3,6 +3,7 @@
 use yii\web\Response;
 use app\services\UserService;
 use app\services\TownService;
+use app\modules\chocouser\Module;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
@@ -14,6 +15,14 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'chocouser' => [
+            'class' => Module::class,
+        ],
+    ],
+    'bootstrap' => [
+        'chocouser',
     ],
     'components' => [
         'request' => [
@@ -58,13 +67,13 @@ $config = [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => true,
             'showScriptName' => false,
-            'rules' => [
-                'POST user' => 'user/create',
-                'GET users' => 'user/user-list',
-                'GET user/<id:\d+>' => 'user/user-detail',
-                'GET users/count' => 'user/user-count',
-                'GET towns' => 'towns/all',
-            ],
+//             'rules' => [
+//                 'POST user' => 'user/create',
+//                 'GET users' => 'user/user-list',
+//                 'GET user/<id:\d+>' => 'user/user-detail',
+//                 'GET users/count' => 'user/user-count',
+//                 'GET towns' => 'towns/all',
+//             ],
         ],
         
         'subject' => [

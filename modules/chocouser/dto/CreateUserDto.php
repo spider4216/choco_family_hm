@@ -1,5 +1,5 @@
 <?php
-namespace app\dto;
+namespace app\modules\chocouser\dto;
 
 class CreateUserDto
 {
