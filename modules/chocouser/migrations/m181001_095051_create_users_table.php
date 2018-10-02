@@ -1,7 +1,7 @@
 <?php
 
 use yii\db\Migration;
-use app\enums\UserStatusEnum;
+use app\modules\chocouser\enums\UserStatusEnum;
 
 /**
  * @author farza
