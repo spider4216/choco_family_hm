@@ -75,5 +75,12 @@ class UserService extends Component
         ->asArray()
         ->one();
     }
+    
+    public function usersCount()
+    {
+        $collection = SubjectModel::find()->all();
+        
+        return count($collection);
+    }
 }
 

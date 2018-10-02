@@ -61,6 +61,7 @@ $config = [
                 'POST user' => 'user/create',
                 'GET users' => 'user/user-list',
                 'GET user/<id:\d+>' => 'user/user-detail',
+                'GET users/count' => 'user/user-count',
             ],
         ],
         

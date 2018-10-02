@@ -49,5 +49,14 @@ class UserController extends Controller
         
         return \Yii::$app->subject->detailById($id);
     }
+    
+    public function actionUserCount()
+    {
+        $count = \Yii::$app->subject->usersCount();
+        
+        return [
+            'count' => $count,
+        ];
+    }
 }
 
