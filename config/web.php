@@ -2,6 +2,7 @@
 
 use yii\web\Response;
 use app\services\UserService;
+use app\services\TownService;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
@@ -62,11 +63,16 @@ $config = [
                 'GET users' => 'user/user-list',
                 'GET user/<id:\d+>' => 'user/user-detail',
                 'GET users/count' => 'user/user-count',
+                'GET towns' => 'towns/all',
             ],
         ],
         
         'subject' => [
             'class' => UserService::class,
+        ],
+
+        'town' => [
+            'class' => TownService::class,
         ],
         
     ],
